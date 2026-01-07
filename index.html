@@ -55,12 +55,24 @@
 
                 <!-- Tabs -->
                 <div class="tabs">
-                    <button class="tab-btn active" data-tab="three-combo">Three-Combination</button>
-                    <button class="tab-btn" data-tab="results">Results</button>
+                    <button class="tab-btn active" data-tab="results">Results</button>
+                    <button class="tab-btn" data-tab="three-combo">Three-Combination</button>
                 </div>
 
+        <!-- Results Tab -->
+        <div class="tab-content active" id="results">
+            <div class="search-bar">
+                <input type="text" id="resultsSearch" placeholder="Search in results (title, content, date)...">
+                <button id="resultsFilter">Filter</button>
+            </div>
+            <div class="results-grid" id="resultsGrid">
+                <!-- Results will be dynamically inserted here -->
+            </div>
+            <div class="pagination" id="resultsPagination"></div>
+        </div>
+
         <!-- Three-Combination Tab -->
-        <div class="tab-content active" id="three-combo">
+        <div class="tab-content" id="three-combo">
             <div class="search-bar">
                 <input type="text" id="threeComboSearch" placeholder="Search keywords...">
                 <button id="threeComboFilter">Filter</button>
@@ -82,18 +94,6 @@
                     <tbody></tbody>
                 </table>
             </div>
-        </div>
-
-        <!-- Results Tab -->
-        <div class="tab-content" id="results">
-            <div class="search-bar">
-                <input type="text" id="resultsSearch" placeholder="Search in results (title, content, date)...">
-                <button id="resultsFilter">Filter</button>
-            </div>
-            <div class="results-grid" id="resultsGrid">
-                <!-- Results will be dynamically inserted here -->
-            </div>
-            <div class="pagination" id="resultsPagination"></div>
         </div>
             </div>
         </div>
