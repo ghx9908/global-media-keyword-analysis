@@ -12,27 +12,12 @@
         <!-- Left Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <h2>Time Filter</h2>
+                <h2>Navigation</h2>
                 <button class="sidebar-toggle" id="sidebarToggle">☰</button>
             </div>
-            <div class="sidebar-content">
-                <div class="filter-section">
-                    <h3>Filter by Year</h3>
-                    <div class="filter-list" id="yearFilter">
-                        <div class="filter-item">
-                            <label><input type="checkbox" value="all" checked> All Years</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-section">
-                    <h3>Filter by Month</h3>
-                    <div class="filter-list" id="monthFilter">
-                        <div class="filter-item">
-                            <label><input type="checkbox" value="all" checked> All Months</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <nav class="nav-menu" id="navMenu">
+                <!-- Navigation items will be dynamically generated -->
+            </nav>
         </aside>
 
         <!-- Main Content -->
@@ -43,63 +28,39 @@
                     <p class="subtitle">Interactive visualization of search query results and data analysis</p>
                 </header>
 
-                <!-- Task Selection -->
-                <section class="task-selector">
-                    <label for="taskSelect">Select Task:</label>
-                    <select id="taskSelect">
-                        <option value="">Loading...</option>
-                    </select>
+                <!-- Time Filter -->
+                <div class="time-filter-section">
+                    <h3>Time Filter</h3>
+                    <div class="time-filter-controls">
+                        <div class="year-selector-group">
+                            <label for="yearSelect">Select Year:</label>
+                            <select id="yearSelect" class="year-select">
+                                <option value="">All Years</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Overview -->
+                <section class="stats-overview" id="statsOverview">
+                    <div class="stat-card">
+                        <h3>Three-Combination Queries</h3>
+                        <div class="stat-number" id="threeComboCount">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Results</h3>
+                        <div class="stat-number" id="totalResults">0</div>
+                    </div>
                 </section>
 
-        <!-- Statistics Overview -->
-        <section class="stats-overview" id="statsOverview">
-            <div class="stat-card">
-                <h3>Two-Combination Queries</h3>
-                <div class="stat-number" id="twoComboCount">0</div>
-            </div>
-            <div class="stat-card">
-                <h3>Three-Combination Queries</h3>
-                <div class="stat-number" id="threeComboCount">0</div>
-            </div>
-            <div class="stat-card">
-                <h3>Total Results</h3>
-                <div class="stat-number" id="totalResults">0</div>
-            </div>
-        </section>
-
-        <!-- Tabs -->
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="two-combo">Two-Combination</button>
-            <button class="tab-btn" data-tab="three-combo">Three-Combination</button>
-            <button class="tab-btn" data-tab="results">Results</button>
-        </div>
-
-        <!-- Two-Combination Tab -->
-        <div class="tab-content active" id="two-combo">
-            <div class="search-bar">
-                <input type="text" id="twoComboSearch" placeholder="Search keywords...">
-                <button id="twoComboFilter">Filter</button>
-            </div>
-            <div class="chart-container">
-                <canvas id="twoComboChart"></canvas>
-            </div>
-            <div class="table-container">
-                <table id="twoComboTable">
-                    <thead>
-                        <tr>
-                            <th>Keyword 1</th>
-                            <th>Keyword 2</th>
-                            <th>Count</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="three-combo">Three-Combination</button>
+                    <button class="tab-btn" data-tab="results">Results</button>
+                </div>
 
         <!-- Three-Combination Tab -->
-        <div class="tab-content" id="three-combo">
+        <div class="tab-content active" id="three-combo">
             <div class="search-bar">
                 <input type="text" id="threeComboSearch" placeholder="Search keywords...">
                 <button id="threeComboFilter">Filter</button>

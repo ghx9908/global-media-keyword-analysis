@@ -6,7 +6,21 @@
       "two_combos": 246,
       "three_combos": 504,
       "results": 1336
+    },
+    {
+      "name": "政策风险萨尔瓦多La Prensa Grafica (San Salvador, El Salvador)",
+      "filename": "政策风险萨尔瓦多La Prensa Grafica (San Salvador, El Salvador).json",
+      "two_combos": 0,
+      "three_combos": 432,
+      "results": 114
+    },
+    {
+      "name": "政策风险哥斯达黎加La Nacion (San Jose, Costa Rica)",
+      "filename": "政策风险哥斯达黎加La Nacion (San Jose, Costa Rica).json",
+      "two_combos": 0,
+      "three_combos": 468,
+      "results": 128
     }
   ],
-  "total_tasks": 1
+  "total_tasks": 3
 }
