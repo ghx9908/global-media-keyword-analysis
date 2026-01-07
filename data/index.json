@@ -8,11 +8,32 @@
       "results": 1336
     },
     {
+      "name": "政策风险秘鲁El Comercio (Lima, Peru)",
+      "filename": "政策风险秘鲁El Comercio (Lima, Peru).json",
+      "two_combos": 0,
+      "three_combos": 468,
+      "results": 327
+    },
+    {
+      "name": "政策风险智利El Mercurio (Santiago, Chile)",
+      "filename": "政策风险智利El Mercurio (Santiago, Chile).json",
+      "two_combos": 0,
+      "three_combos": 468,
+      "results": 1545
+    },
+    {
       "name": "政策风险萨尔瓦多La Prensa Grafica (San Salvador, El Salvador)",
       "filename": "政策风险萨尔瓦多La Prensa Grafica (San Salvador, El Salvador).json",
       "two_combos": 0,
       "three_combos": 432,
       "results": 114
+    },
+    {
+      "name": "政策风险乌拉圭El País (Montevideo, Uruguay)",
+      "filename": "政策风险乌拉圭El País (Montevideo, Uruguay).json",
+      "two_combos": 0,
+      "three_combos": 504,
+      "results": 535
     },
     {
       "name": "政策风险哥斯达黎加La Nacion (San Jose, Costa Rica)",
@@ -22,5 +43,5 @@
       "results": 128
     }
   ],
-  "total_tasks": 3
+  "total_tasks": 6
 }
