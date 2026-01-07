@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results Visualization</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Left Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Time Filter</h2>
+                <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+            </div>
+            <div class="sidebar-content">
+                <div class="filter-section">
+                    <h3>Filter by Year</h3>
+                    <div class="filter-list" id="yearFilter">
+                        <div class="filter-item">
+                            <label><input type="checkbox" value="all" checked> All Years</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <h3>Filter by Month</h3>
+                    <div class="filter-list" id="monthFilter">
+                        <div class="filter-item">
+                            <label><input type="checkbox" value="all" checked> All Months</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="container">
+                <header>
+                    <h1>Search Results Visualization Dashboard</h1>
+                    <p class="subtitle">Interactive visualization of search query results and data analysis</p>
+                </header>
+
+                <!-- Task Selection -->
+                <section class="task-selector">
+                    <label for="taskSelect">Select Task:</label>
+                    <select id="taskSelect">
+                        <option value="">Loading...</option>
+                    </select>
+                </section>
+
+        <!-- Statistics Overview -->
+        <section class="stats-overview" id="statsOverview">
+            <div class="stat-card">
+                <h3>Two-Combination Queries</h3>
+                <div class="stat-number" id="twoComboCount">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Three-Combination Queries</h3>
+                <div class="stat-number" id="threeComboCount">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Results</h3>
+                <div class="stat-number" id="totalResults">0</div>
+            </div>
+        </section>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="two-combo">Two-Combination</button>
+            <button class="tab-btn" data-tab="three-combo">Three-Combination</button>
+            <button class="tab-btn" data-tab="results">Results</button>
+        </div>
+
+        <!-- Two-Combination Tab -->
+        <div class="tab-content active" id="two-combo">
+            <div class="search-bar">
+                <input type="text" id="twoComboSearch" placeholder="Search keywords...">
+                <button id="twoComboFilter">Filter</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="twoComboChart"></canvas>
+            </div>
+            <div class="table-container">
+                <table id="twoComboTable">
+                    <thead>
+                        <tr>
+                            <th>Keyword 1</th>
+                            <th>Keyword 2</th>
+                            <th>Count</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Three-Combination Tab -->
+        <div class="tab-content" id="three-combo">
+            <div class="search-bar">
+                <input type="text" id="threeComboSearch" placeholder="Search keywords...">
+                <button id="threeComboFilter">Filter</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="threeComboChart"></canvas>
+            </div>
+            <div class="table-container">
+                <table id="threeComboTable">
+                    <thead>
+                        <tr>
+                            <th>Keyword 1</th>
+                            <th>Keyword 2</th>
+                            <th>Keyword 3</th>
+                            <th>Count</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Results Tab -->
+        <div class="tab-content" id="results">
+            <div class="search-bar">
+                <input type="text" id="resultsSearch" placeholder="Search in results (title, content, date)...">
+                <button id="resultsFilter">Filter</button>
+            </div>
+            <div class="results-grid" id="resultsGrid">
+                <!-- Results will be dynamically inserted here -->
+            </div>
+            <div class="pagination" id="resultsPagination"></div>
+        </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>
+
