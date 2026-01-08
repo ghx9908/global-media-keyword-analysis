@@ -183,20 +183,23 @@ header h1 {
     flex-wrap: wrap;
 }
 
-.year-selector-group {
+.year-selector-group,
+.month-selector-group {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.year-selector-group label {
+.year-selector-group label,
+.month-selector-group label {
     font-weight: 600;
     color: #333;
     font-size: 1em;
     white-space: nowrap;
 }
 
-.year-select {
+.year-select,
+.month-select {
     padding: 10px 20px;
     border: 2px solid #ddd;
     border-radius: 6px;
@@ -204,15 +207,17 @@ header h1 {
     background: white;
     cursor: pointer;
     transition: border-color 0.3s;
-    min-width: 150px;
+    min-width: 180px;
     font-weight: 500;
 }
 
-.year-select:hover {
+.year-select:hover,
+.month-select:hover {
     border-color: #667eea;
 }
 
-.year-select:focus {
+.year-select:focus,
+.month-select:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -491,13 +496,15 @@ tbody tr:hover {
         align-items: stretch;
     }
     
-    .year-selector-group {
+    .year-selector-group,
+    .month-selector-group {
         width: 100%;
         flex-direction: column;
         align-items: flex-start;
     }
     
-    .year-select {
+    .year-select,
+    .month-select {
         width: 100%;
     }
     

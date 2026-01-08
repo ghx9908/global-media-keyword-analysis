@@ -156,17 +156,25 @@ function setupEventListeners() {
     setupTimeSearch();
 }
 
-// Setup time search with year selector
+// Setup time search with year and month selectors
 function setupTimeSearch() {
     const yearSelect = document.getElementById('yearSelect');
+    const monthSelect = document.getElementById('monthSelect');
     
-    if (!yearSelect) return;
+    if (!yearSelect || !monthSelect) return;
     
-    // Populate year selector when data is loaded
+    // Populate selectors when data is loaded
     populateYearSelector();
+    populateMonthSelector();
     
-    // Add event listener
-    yearSelect.addEventListener('change', applyTimeFilter);
+    // Add event listeners
+    yearSelect.addEventListener('change', () => {
+        // When year changes, update month selector to show only months from that year
+        populateMonthSelector();
+        applyTimeFilter();
+    });
+    
+    monthSelect.addEventListener('change', applyTimeFilter);
 }
 
 // Populate year selector with available years from data
@@ -199,31 +207,90 @@ function populateYearSelector() {
     });
 }
 
-// Apply time filter based on year selector
+// Populate month selector with available months from data
+function populateMonthSelector() {
+    if (!currentData || !currentData.results) return;
+    
+    const yearSelect = document.getElementById('yearSelect');
+    const monthSelect = document.getElementById('monthSelect');
+    const selectedYear = yearSelect ? yearSelect.value : '';
+    
+    if (!monthSelect) return;
+    
+    const months = new Set();
+    currentData.results.forEach(result => {
+        if (result.month_str) {
+            // If year is selected, only show months from that year
+            if (selectedYear) {
+                if (result.month_str.startsWith(selectedYear)) {
+                    months.add(result.month_str);
+                }
+            } else {
+                months.add(result.month_str);
+            }
+        }
+    });
+    
+    // Sort months (newest first)
+    const sortedMonths = Array.from(months).sort().reverse();
+    
+    // Clear existing options (except "All Months")
+    monthSelect.innerHTML = '<option value="">All Months</option>';
+    
+    // Add month options
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                      'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    sortedMonths.forEach(monthStr => {
+        const [year, month] = monthStr.split('-');
+        const monthName = monthNames[parseInt(month) - 1];
+        const displayText = `${monthName} ${year}`;
+        
+        const option = document.createElement('option');
+        option.value = monthStr;
+        option.textContent = displayText;
+        monthSelect.appendChild(option);
+    });
+}
+
+// Apply time filter based on year and month selectors
 function applyTimeFilter() {
     if (!currentData || !currentData.results) return;
     
     const yearSelect = document.getElementById('yearSelect');
+    const monthSelect = document.getElementById('monthSelect');
     
-    if (!yearSelect) {
+    if (!yearSelect || !monthSelect) {
         filteredResults = currentData.results;
         updateResultsView();
         return;
     }
     
     const selectedYear = yearSelect.value;
+    const selectedMonth = monthSelect.value;
     
-    // If no year selected, show all
-    if (!selectedYear) {
+    // If both are empty, show all
+    if (!selectedYear && !selectedMonth) {
         filteredResults = currentData.results;
         updateResultsView();
         return;
     }
     
-    // Filter results by year
+    // Filter results
     filteredResults = currentData.results.filter(result => {
-        if (!result.year_str) return false;
-        return result.year_str === selectedYear;
+        if (!result.month_str && !result.year_str) return false;
+        
+        // If month is selected, use month filter (more specific)
+        if (selectedMonth) {
+            return result.month_str === selectedMonth;
+        }
+        
+        // Otherwise, use year filter
+        if (selectedYear) {
+            return result.year_str === selectedYear;
+        }
+        
+        return true;
     });
     
     updateResultsView();
@@ -248,10 +315,13 @@ function updateAllViews() {
     
     updateStatistics();
     updateThreeComboView();
-    // Populate year selector and reset filter
+    // Populate selectors and reset filter
     populateYearSelector();
+    populateMonthSelector();
     const yearSelect = document.getElementById('yearSelect');
+    const monthSelect = document.getElementById('monthSelect');
     if (yearSelect) yearSelect.value = '';
+    if (monthSelect) monthSelect.value = '';
     applyTimeFilter();
 }
 
